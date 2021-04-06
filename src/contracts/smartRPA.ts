@@ -2,7 +2,7 @@ import Web3 from 'web3';
 
 const web3 = new Web3();
 
-const address: string = '';
+const address: string = '0x2431DcfAbA35E530D06dcd142505BEE30F48Ae3a';
 
 const abi: any = [
     [
