@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import './App.css';
 import  Web3 from 'web3';
-
+import Home from './pages/index'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import smartRPA from './contracts/smartRPA';
 
 interface IProps {
@@ -44,8 +45,8 @@ class App extends Component<IProps, IState> {
   render() {
     return (
       <div className="App">
-        <h1> Web3 React Template</h1>
-        <p>Your account: {this.state.account}</p>
+       
+      <Home></Home>
       </div>
     );
   }
