@@ -4,7 +4,7 @@ import  Web3 from 'web3';
 import Home from './pages/index'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import smartRPA from './contracts/smartRPA';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 interface IProps {
 
 }
