@@ -50,3 +50,36 @@
   display: flex !important;
   align-items: center !important;
 }
+.ActiveStep {
+  animation: pulse 2s infinite;
+}
+.InactiveStep {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+.buttonActive {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+  }
+}
+.buttonDisabled {
+  opacity: 0.65 !important;
+  cursor: not-allowed !important;
+  background-color: #a9c1ee !important;
+}
+.formContainer {
+  margin: 25%;
+}
