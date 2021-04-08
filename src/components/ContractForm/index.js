@@ -27,7 +27,7 @@ const SignInForm = (props) => {
 
   return (
     <div className="formContainer">
-      <h1>User Sign In Form</h1>
+      <h1>Create Contract From</h1>
       <Form className="form" onSubmit={login}>
         <Form.Group controlId="formBasicUsername">
           <Form.Label>URL</Form.Label>

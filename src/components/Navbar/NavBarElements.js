@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 import { GiPotionBall } from "react-icons/gi";
 export const Nav = styled.nav`
   background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
@@ -26,7 +26,7 @@ export const NavbarContainer = styled.div`
   max-width: 1100px;
 `;
 
-export const NavLogo = styled.a`
+export const NavLogo = styled(Link)`
   color: #fff;
   justify-self: flex-start;
   cursor: pointer;
@@ -70,7 +70,7 @@ export const NavItem = styled.li`
   margin-right: 30px;
   font-family: "Secular One", sans-serif;
 `;
-export const NavLinks = styled.a`
+export const NavLinks = styled(Link)`
   color: white;
   display: flex;
   align-items: center;

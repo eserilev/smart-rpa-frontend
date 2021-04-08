@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { animateScroll as scroll } from "react-scroll";
 import { Button } from "../HeroSection/Button";
+
 import cryptoVideo from "../../videos/cryptoVideo.mp4";
 import {
   HeroContainer,
@@ -20,6 +21,19 @@ const HeroSection = () => {
   const onHover = () => {
     setHover(!hover);
   };
+  const [scrollNav, setScrollNav] = useState(false);
+
+  const changeNav = () => {
+    if (window.scrollY >= 80) {
+      setScrollNav(true);
+    } else {
+      setScrollNav(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNav);
+  }, []);
 
   return (
     <HeroContainer>
@@ -33,11 +47,12 @@ const HeroSection = () => {
         </HeroP>
         <HeroBtnWrapper>
           <Button
-            to="/signup"
+            to="/ContractForm"
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             primary="true"
             dark="true"
+            style={{ textDecoration: "none", color: "black" }}
           >
             Start The Process{hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
