@@ -3,13 +3,14 @@ import './App.css';
 import  Web3 from 'web3';
 import Home from './pages/index'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import smartRPA from './contracts/smartRPA';
+import SmartRPAFactory from './contracts/smartRPAFactory';
 
 interface IProps {
 
 }
 interface IState {
   account?: string;
+  web3: Web3;
 }
 
 class App extends Component<IProps, IState> {
@@ -18,20 +19,21 @@ class App extends Component<IProps, IState> {
     this.loadWeb3();
     this.loadBlockchainData();
 
-    console.log(JSON.stringify(smartRPA));
+   
   }
 
   async loadWeb3() {
     if(window['ethereum'] ) {
       window['web3'] = new Web3(window['ethereum'])
       await window['ethereum'].enable();
-
-
+      this.setState({ web3: new Web3(window['ethereum'])});
+      console.log(this.state.web3);
     }
   }
 
   async loadBlockchainData() {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+    
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] })
   }
@@ -39,7 +41,7 @@ class App extends Component<IProps, IState> {
 
   constructor(props) {
     super(props);
-    this.state = { account: '' }
+    this.state = { account: '', web3: null }
   }
 
   render() {
