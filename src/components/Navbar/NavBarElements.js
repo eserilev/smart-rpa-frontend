@@ -94,7 +94,7 @@ export const NavBtn = styled.nav`
   }
 `;
 
-export const NavBtnLink = styled.a`
+export const NavBtnLink = styled.button`
   border-radius: 50px;
   background: #01bf71;
   white-space: nowrap;
@@ -109,7 +109,7 @@ export const NavBtnLink = styled.a`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    color: #010606;
+    background: white;
   }
 `;
 
