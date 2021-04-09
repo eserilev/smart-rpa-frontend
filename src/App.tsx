@@ -27,7 +27,6 @@ class App extends Component<IProps, IState> {
       window['web3'] = new Web3(window['ethereum'])
       await window['ethereum'].enable();
       this.setState({ web3: new Web3(window['ethereum'])});
-      console.log(this.state.web3);
     }
   }
 
