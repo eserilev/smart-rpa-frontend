@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import moment from "moment";
-import { Form, Button } from "react-bootstrap";
+
+import { Form, Button, Alert } from "react-bootstrap";
 import smartRPAFactory from "../../contracts/smartRPAFactory";
-import  Web3 from 'web3';
+import Web3 from "web3";
+import { LoginContext } from "../../Contexts/LoginContext";
+import useWindowSize from "react-use/lib/useWindowSize";
+import MakeConfetti from "../../Confetti/index";
+import { useParams, useHistory } from "react-router-dom";
 
 // import styled from "styled-components";
 
@@ -14,7 +19,7 @@ const formSchema = {
 
 const SignInForm = (props) => {
   const [credentials, setCredentials] = useState(formSchema);
-
+  const { push } = useHistory();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials({
@@ -22,11 +27,15 @@ const SignInForm = (props) => {
       [name]: value,
     });
   };
+  const redirectToTarget = () => {
+    props.history.push(`/SuccessPage`);
+  };
 
   const submitOffer = async (e) => {
     e.preventDefault();
     const url = credentials.URL;
     const expiration = moment(credentials.expiration);
+
     const daysTilExpiration = expiration.diff(moment(), 'days');
 
     let web3 = new Web3(window['ethereum']);
@@ -34,6 +43,7 @@ const SignInForm = (props) => {
     const accounts = await web3.eth.getAccounts();
     const smartRPA = new web3.eth.Contract(smartRPAFactory.abi, smartRPAFactory.address);
     await smartRPA.methods.submitOffer(daysTilExpiration, url).send({from: accounts[0]});
+
   };
 
   return (

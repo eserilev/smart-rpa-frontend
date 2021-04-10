@@ -41,9 +41,13 @@ const Navbar = ({ toggle }) => {
       <IconContext.Provider value={{ color: "white", size: "50px" }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-            <NavLogo to="/" onClick={toggleHome}>
+            <NavLogo
+              to="/"
+              onClick={toggleHome}
+              style={{ textDecoration: "none", color: "white" }}
+            >
               {" "}
-              Crypto RSA
+              Smart RPA
               <FaEthereum />
             </NavLogo>
 
@@ -56,7 +60,9 @@ const Navbar = ({ toggle }) => {
               </NavItem> */}
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to="/signin">Connect Wallet</NavBtnLink>
+              <NavBtnLink to="/signin" style={{ textDecoration: "none" }}>
+                Connect Wallet
+              </NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>

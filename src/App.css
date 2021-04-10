@@ -81,5 +81,20 @@
   background-color: #a9c1ee !important;
 }
 .formContainer {
-  margin: 25%;
+  padding: 10% 25%;
+  font-family: "Staatliches", cursive;
+  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+}
+.formContainer > h1 {
+  font-size: 2rem;
+  padding-top: 100px;
+  font-weight: bold;
+}
+.formContainer > * {
+}
+.alerter {
+  text-align: center;
+}
+.nothingFoundHeading {
+  font-size: 50px;
 }
