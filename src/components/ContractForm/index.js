@@ -35,15 +35,7 @@ const SignInForm = (props) => {
     const expiration = moment(credentials.expiration);
     const daysTilExpiration = expiration.diff(moment(), "days");
 
-    let newContract = {
-      newUrl: credentials.URL,
-      newexpiration: expiration._i,
-      newdaysTilExpiration: expiration.diff(moment(), "days"),
-    };
 
-    props.setCurrentContracts([...props.currentContracts, newContract]);
-    console.log("New Contract", newContract);
-    console.log("Current Contracts", props.currentContracts);
     let web3 = new Web3(window["ethereum"]);
 
     const accounts = await web3.eth.getAccounts();
@@ -51,6 +43,12 @@ const SignInForm = (props) => {
       smartRPAFactory.abi,
       smartRPAFactory.address
     );
+    
+    
+    
+   
+
+
     await smartRPA.methods
       .submitOffer(daysTilExpiration, url)
       .send({ from: accounts[0] });

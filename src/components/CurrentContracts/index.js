@@ -3,12 +3,39 @@ import { Table } from "react-bootstrap";
 import { LoginContext } from "../../Contexts/LoginContext";
 import { Button } from "../HeroSection/Button";
 import { GrStatusUnknown } from "react-icons/gr";
+import smartRPAFactory from "../../contracts/smartRPAFactory";
+import Web3 from "web3";
 import "./currentContract.css";
 const CurrentContracts = (props) => {
   const { currentContracts, setCurrentContracts } = useContext(LoginContext);
   console.log(Object.keys(props.currentContracts).length);
   let totalId = 0;
   console.log(props.currentContracts);
+
+
+  useEffect(async () => {
+    let web3 = new Web3(window["ethereum"]);
+    const smartRPA = new web3.eth.Contract(
+      smartRPAFactory.abi,
+      smartRPAFactory.address
+    );   
+    var count = await smartRPA.methods.getNumberOfOffers().call();
+    let currentContracts = [];
+    for(let i = 0; i < count; i++ ) {
+      var offer = await smartRPA.methods.offers(i).call();
+      let newContract = {
+        newUrl: offer.rpaURL,
+        newdaysTilExpiration: offer.initialResponseTime,
+        activeOffer: offer.activeOffer,
+        offerRespondedTo: offer.offerRespondedTo,
+        offerResponse: "NO RESPONSE"
+      };
+      currentContracts.push(newContract);   
+    }    
+    props.setCurrentContracts([...currentContracts]);
+  }, []);
+
+
   return (
     <div className="tableContainer">
       {props.currentContracts.length === 0 && (
