@@ -44,11 +44,6 @@ const SignInForm = (props) => {
       smartRPAFactory.address
     );
     
-    
-    
-   
-
-
     await smartRPA.methods
       .submitOffer(daysTilExpiration, url)
       .send({ from: accounts[0] });
