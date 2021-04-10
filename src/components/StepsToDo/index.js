@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import React, { useState, useContext } from "react";
+
+import { Container, Row, Col, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 const StepsToDo = () => {
@@ -8,10 +9,27 @@ const StepsToDo = () => {
   const [active3, setActive3] = useState(false);
   const [active4, setActive4] = useState(false);
   const [active5, setActive5] = useState(false);
+  const [show, setShow] = useState(true);
+
   return (
     <>
       <h1 className="stepsh1">Step By Step Application Process</h1>
       <Container fluid>
+        {show ? (
+          <Alert
+            variant="success"
+            onClose={() => setShow(false)}
+            dismissible
+            className="alerter"
+          >
+            <Alert.Heading>Pending Contracts Found!</Alert.Heading>
+            <LinkContainer to="/CurrentContracts">
+              <Alert.Link>View Contracts Here!</Alert.Link>
+            </LinkContainer>
+
+            <p></p>
+          </Alert>
+        ) : null}
         <Row className="align-items-center">
           <Col xs md={6} xl={4} className="align-self-center">
             <div

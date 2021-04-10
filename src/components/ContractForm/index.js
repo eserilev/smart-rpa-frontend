@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import moment from "moment";
-import { Form, Button } from "react-bootstrap";
-
+import { Form, Button, Alert } from "react-bootstrap";
+import smartRPAFactory from "../../contracts/smartRPAFactory";
+import Web3 from "web3";
+import { LoginContext } from "../../Contexts/LoginContext";
+import useWindowSize from "react-use/lib/useWindowSize";
+import MakeConfetti from "../../Confetti/index";
+import { useParams, useHistory } from "react-router-dom";
 // import styled from "styled-components";
 
+var test = smartRPAFactory.abi;
 const formSchema = {
   URL: "",
   expiration: "",
@@ -11,7 +17,7 @@ const formSchema = {
 
 const SignInForm = (props) => {
   const [credentials, setCredentials] = useState(formSchema);
-
+  const { push } = useHistory();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials({
@@ -19,18 +25,44 @@ const SignInForm = (props) => {
       [name]: value,
     });
   };
-
-  const login = (e) => {
-    e.preventDefault();
+  const redirectToTarget = () => {
+    props.history.push(`/SuccessPage`);
   };
-  console.log(Date.now());
+
+  const submitOffer = async (e) => {
+    e.preventDefault();
+    const url = credentials.URL;
+    const expiration = moment(credentials.expiration);
+    const daysTilExpiration = expiration.diff(moment(), "days");
+
+    let newContract = {
+      newUrl: credentials.URL,
+      newexpiration: expiration._i,
+      newdaysTilExpiration: expiration.diff(moment(), "days"),
+    };
+
+    props.setCurrentContracts([...props.currentContracts, newContract]);
+    console.log("New Contract", newContract);
+    console.log("Current Contracts", props.currentContracts);
+    let web3 = new Web3(window["ethereum"]);
+
+    const accounts = await web3.eth.getAccounts();
+    const smartRPA = new web3.eth.Contract(
+      smartRPAFactory.abi,
+      smartRPAFactory.address
+    );
+    await smartRPA.methods
+      .submitOffer(daysTilExpiration, url)
+      .send({ from: accounts[0] });
+    redirectToTarget();
+  };
 
   return (
     <div className="formContainer">
-      <h1>Create Contract From</h1>
-      <Form className="form" onSubmit={login}>
+      <h1>Submit an offer</h1>
+      <Form className="form" onSubmit={submitOffer}>
         <Form.Group controlId="formBasicUsername">
-          <Form.Label>URL</Form.Label>
+          <Form.Label>RPA Document URL</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter URL"
@@ -40,7 +72,7 @@ const SignInForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
-          <Form.Label>Expiry Date</Form.Label>
+          <Form.Label>Initial Expiry Date</Form.Label>
           <Form.Control
             type="date"
             placeholder="Date"

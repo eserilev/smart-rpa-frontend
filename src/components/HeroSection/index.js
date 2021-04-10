@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { Button } from "../HeroSection/Button";
+import { Alert } from "react-bootstrap";
 
 import cryptoVideo from "../../videos/cryptoVideo.mp4";
 import {
@@ -37,6 +38,9 @@ const HeroSection = () => {
 
   return (
     <HeroContainer>
+      <Alert variant="success">
+        <Alert.Heading>Contract Already Found View It Here.</Alert.Heading>
+      </Alert>
       <HeroBg>
         <VideoBg autoPlay loop muted src={cryptoVideo} type="video/mp4" />
       </HeroBg>

@@ -92,3 +92,9 @@
 }
 .formContainer > * {
 }
+.alerter {
+  text-align: center;
+}
+.nothingFoundHeading {
+  font-size: 50px;
+}

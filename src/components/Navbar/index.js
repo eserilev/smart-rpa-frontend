@@ -47,7 +47,7 @@ const Navbar = ({ toggle }) => {
               style={{ textDecoration: "none", color: "white" }}
             >
               {" "}
-              Crypto RSA
+              Smart RPA
               <FaEthereum />
             </NavLogo>
 
