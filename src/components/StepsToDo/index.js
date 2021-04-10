@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import { Container, Row, Col, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-const StepsToDo = () => {
+const StepsToDo = (props) => {
   const [active1, setActive1] = useState("ActiveStep");
   const [active2, setActive2] = useState(false);
   const [active3, setActive3] = useState(false);
@@ -15,7 +15,7 @@ const StepsToDo = () => {
     <>
       <h1 className="stepsh1">Step By Step Application Process</h1>
       <Container fluid>
-        {show ? (
+        {props.currentContracts.length !== 0 && (
           <Alert
             variant="success"
             onClose={() => setShow(false)}
@@ -29,7 +29,7 @@ const StepsToDo = () => {
 
             <p></p>
           </Alert>
-        ) : null}
+        )}
         <Row className="align-items-center">
           <Col xs md={6} xl={4} className="align-self-center">
             <div

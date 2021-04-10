@@ -38,9 +38,7 @@ const HeroSection = () => {
 
   return (
     <HeroContainer>
-      <Alert variant="success">
-        <Alert.Heading>Contract Already Found View It Here.</Alert.Heading>
-      </Alert>
+   
       <HeroBg>
         <VideoBg autoPlay loop muted src={cryptoVideo} type="video/mp4" />
       </HeroBg>
