@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { Form, Button } from "react-bootstrap";
+import smartRPAFactory from "../../contracts/smartRPAFactory";
+import  Web3 from 'web3';
 
 // import styled from "styled-components";
 
+var test = smartRPAFactory.abi;
 const formSchema = {
   URL: "",
   expiration: "",
@@ -20,17 +23,25 @@ const SignInForm = (props) => {
     });
   };
 
-  const login = (e) => {
+  const submitOffer = async (e) => {
     e.preventDefault();
+    const url = credentials.URL;
+    const expiration = moment(credentials.expiration);
+    const daysTilExpiration = expiration.diff(moment(), 'days');
+
+    let web3 = new Web3(window['ethereum']);
+
+    const accounts = await web3.eth.getAccounts();
+    const smartRPA = new web3.eth.Contract(smartRPAFactory.abi, smartRPAFactory.address);
+    await smartRPA.methods.submitOffer(daysTilExpiration, url).send({from: accounts[0]});
   };
-  console.log(Date.now());
 
   return (
     <div className="formContainer">
-      <h1>User Sign In Form</h1>
-      <Form className="form" onSubmit={login}>
+      <h1>Submit an offer</h1>
+      <Form className="form" onSubmit={submitOffer}>
         <Form.Group controlId="formBasicUsername">
-          <Form.Label>URL</Form.Label>
+          <Form.Label>RPA Document URL</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter URL"
@@ -40,7 +51,7 @@ const SignInForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
-          <Form.Label>Expiry Date</Form.Label>
+          <Form.Label>Initial Expiry Date</Form.Label>
           <Form.Control
             type="date"
             placeholder="Date"

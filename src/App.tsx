@@ -18,8 +18,6 @@ class App extends Component<IProps, IState> {
   componentDidMount() {
     this.loadWeb3();
     this.loadBlockchainData();
-
-   
   }
 
   async loadWeb3() {
