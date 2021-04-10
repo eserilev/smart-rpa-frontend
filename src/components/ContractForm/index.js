@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import moment from "moment";
+
 import { Form, Button, Alert } from "react-bootstrap";
 import smartRPAFactory from "../../contracts/smartRPAFactory";
 import Web3 from "web3";
@@ -7,6 +8,7 @@ import { LoginContext } from "../../Contexts/LoginContext";
 import useWindowSize from "react-use/lib/useWindowSize";
 import MakeConfetti from "../../Confetti/index";
 import { useParams, useHistory } from "react-router-dom";
+
 // import styled from "styled-components";
 
 var test = smartRPAFactory.abi;
@@ -33,8 +35,7 @@ const SignInForm = (props) => {
     e.preventDefault();
     const url = credentials.URL;
     const expiration = moment(credentials.expiration);
-    const daysTilExpiration = expiration.diff(moment(), "days");
-
+    const daysTilExpiration = expiration.diff(moment(), 'days');
 
     let web3 = new Web3(window["ethereum"]);
 

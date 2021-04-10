@@ -28,7 +28,10 @@ const Home = () => {
         <Switch>
           <Route exact path="/">
             <HeroSection />
-            <StepsToDo />
+            <StepsToDo
+              currentContracts={currentContracts}
+              setCurrentContracts={setCurrentContracts}
+            />
           </Route>
           <Route
             exact

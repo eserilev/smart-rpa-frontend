@@ -3,8 +3,8 @@ import './App.css';
 import  Web3 from 'web3';
 import Home from './pages/index'
 
-
-
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import SmartRPAFactory from './contracts/smartRPAFactory';
 
 
 interface IProps {
