@@ -35,15 +35,20 @@ const SignInForm = (props) => {
     e.preventDefault();
     const url = credentials.URL;
     const expiration = moment(credentials.expiration);
-
     const daysTilExpiration = expiration.diff(moment(), 'days');
 
-    let web3 = new Web3(window['ethereum']);
+    let web3 = new Web3(window["ethereum"]);
 
     const accounts = await web3.eth.getAccounts();
-    const smartRPA = new web3.eth.Contract(smartRPAFactory.abi, smartRPAFactory.address);
-    await smartRPA.methods.submitOffer(daysTilExpiration, url).send({from: accounts[0]});
-
+    const smartRPA = new web3.eth.Contract(
+      smartRPAFactory.abi,
+      smartRPAFactory.address
+    );
+    
+    await smartRPA.methods
+      .submitOffer(daysTilExpiration, url)
+      .send({ from: accounts[0] });
+    redirectToTarget();
   };
 
   return (
