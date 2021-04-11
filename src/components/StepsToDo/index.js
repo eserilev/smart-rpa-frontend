@@ -6,7 +6,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import smartRPAFactory from "../../contracts/smartRPAFactory";
 import Web3 from "web3";
 const stepFromLocalStorage = JSON.parse(
-  localStorage.getItem("activeStep") || "1"
+  localStorage.getItem("activeStep") || 1
 );
 const StepsToDo = (props) => {
   const [activeStep, setActiveStep] = useState(stepFromLocalStorage);
@@ -132,7 +132,7 @@ const StepsToDo = (props) => {
                   id="STEP_1"
                   target="_blank"
                   href="/CurrentContracts"
-                  onClick={() => setActiveStep("1")}
+                  onClick={() => setActiveStep(1)}
                 >
                   View My Offers!
                 </Button>
