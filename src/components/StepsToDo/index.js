@@ -106,7 +106,7 @@ const StepsToDo = (props) => {
                   renderAs="button"
                   id="STEP_2"
                   target="_blank"
-                  href="http://localhost:3000/ContractForm"
+                  href="/ContractForm"
                   onClick={() => setActiveStep("3")}
                 >
                   Submit Offer!
@@ -131,7 +131,7 @@ const StepsToDo = (props) => {
                   renderAs="button"
                   id="STEP_1"
                   target="_blank"
-                  href="http://localhost:3000/CurrentContracts"
+                  href="/CurrentContracts"
                   onClick={() => setActiveStep("1")}
                 >
                   View My Offers!
