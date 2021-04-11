@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { LoginContext } from "../../Contexts/LoginContext";
 import { Button } from "../HeroSection/Button";
@@ -6,11 +6,14 @@ import { GrStatusUnknown } from "react-icons/gr";
 import smartRPAFactory from "../../contracts/smartRPAFactory";
 import Web3 from "web3";
 import "./currentContract.css";
+import { RingLoader } from "react-spinners";
 const CurrentContracts = (props) => {
+  const [showLoader, setShowLoader] = useState(true);
   const { currentContracts, setCurrentContracts } = useContext(LoginContext);
   console.log(Object.keys(props.currentContracts).length);
   let totalId = 0;
   console.log(props.currentContracts);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -37,6 +40,7 @@ const CurrentContracts = (props) => {
       props.setCurrentContracts([...currentContracts]);
     };
     fetchData();
+    setShowLoader(false);
   }, []);
 
   return (
@@ -45,6 +49,7 @@ const CurrentContracts = (props) => {
         <div className="noContractsFound">
           <h1 className="noContractsFoundText">
             <GrStatusUnknown /> No Contracts Found... <GrStatusUnknown />
+            <RingLoader />
           </h1>
           <Button
             className="noContractsFoundButton"
@@ -58,41 +63,43 @@ const CurrentContracts = (props) => {
       {props.currentContracts.length !== 0 && (
         <>
           <h1 className="ContractsFound">Your Current Contracts!</h1>
-          <Table
-            striped
-            bordered
-            hover
-            variant="dark"
-            className="contractTable"
-          >
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Contract URL</th>
+          {
+            <Table
+              striped
+              bordered
+              hover
+              variant="dark"
+              className="contractTable"
+            >
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Contract URL</th>
 
-                <th>Days Until Expiration</th>
-                <th>Active Offer</th>
-                <th>Offer Response</th>
-                <th>Offer Responded To</th>
-              </tr>
-            </thead>
-            <tbody>
-              {props.currentContracts.map((contract) => {
-                totalId++;
-                return (
-                  <tr>
-                    <td>{totalId}</td>
-                    <td>{contract.newUrl}</td>
+                  <th>Days Until Expiration</th>
+                  <th>Active Offer</th>
+                  <th>Offer Response</th>
+                  <th>Offer Responded To</th>
+                </tr>
+              </thead>
+              <tbody>
+                {props.currentContracts.map((contract) => {
+                  totalId++;
+                  return (
+                    <tr>
+                      <td>{totalId}</td>
+                      <td>{contract.newUrl}</td>
 
-                    <td>{contract.newdaysTilExpiration}</td>
-                    <td>{JSON.stringify(contract.activeOffer)}</td>
-                    <td>{contract.offerResponse}</td>
-                    <td>{JSON.stringify(contract.offerRespondedTo)}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
+                      <td>{contract.newdaysTilExpiration}</td>
+                      <td>{JSON.stringify(contract.activeOffer)}</td>
+                      <td>{contract.offerResponse}</td>
+                      <td>{JSON.stringify(contract.offerRespondedTo)}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+          }
         </>
       )}
     </div>

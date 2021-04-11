@@ -77,7 +77,7 @@ const SignInForm = (props) => {
           />
         </div>
       )}
-      ;
+
       {loading !== true && (
         <Form className="form" onSubmit={submitOffer}>
           <Form.Group controlId="formBasicUsername">
@@ -91,7 +91,7 @@ const SignInForm = (props) => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Initial Expiry Date</Form.Label>
+            <Form.Label>Expiration Date</Form.Label>
             <Form.Control
               type="date"
               placeholder="Date"
