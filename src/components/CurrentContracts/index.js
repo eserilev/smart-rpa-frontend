@@ -50,7 +50,7 @@ const CurrentContracts = (props) => {
       {props.currentContracts.length === 0 && (
         <div className="noContractsFound">
           <h1 className="noContractsFoundText">
-            <GrStatusUnknown /> No Contracts Found... <GrStatusUnknown />
+            <GrStatusUnknown /> No Offers Found... <GrStatusUnknown />
             <RingLoader />
           </h1>
           <Button
@@ -58,7 +58,7 @@ const CurrentContracts = (props) => {
             style={{ textDecoration: "none", color: "white" }}
             to="/ContractForm"
           >
-            Create New Contract
+            Submit a new Offer
           </Button>
         </div>
       )}
@@ -66,7 +66,7 @@ const CurrentContracts = (props) => {
         {currentContracts.length !== 0 && (
           <h1 className="contractsFoundHeader">
             {" "}
-            Your Current Smart RPA Contracts!
+            Current Offers
           </h1>
         )}
         <Row className="align-items-center justify-content-evenly">
