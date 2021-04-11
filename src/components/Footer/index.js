@@ -25,21 +25,36 @@ const Footer = () => {
         <FooterLinksContainer>
           <FooterLinksWrapper>
             <FooterLinkItems>
-              <FooterLogo>
+              <FooterLogo
+                style={{ textDecoration: "none", color: "white" }}
+                to="/home"
+              >
                 Smart RPA
                 <FaEthereum />
               </FooterLogo>
               <FooterLinkTitle> About Us</FooterLinkTitle>
-              <FooterLink to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md">
+              <FooterLink
+                style={{ textDecoration: "none", color: "white" }}
+                to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+              >
                 How It Works
               </FooterLink>
-              <FooterLink to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md">
+              <FooterLink
+                style={{ textDecoration: "none", color: "white" }}
+                to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+              >
                 Testimonials
               </FooterLink>
-              <FooterLink to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md">
+              <FooterLink
+                style={{ textDecoration: "none", color: "white" }}
+                to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+              >
                 Careers
               </FooterLink>
-              <FooterLink to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md">
+              <FooterLink
+                style={{ textDecoration: "none", color: "white" }}
+                to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+              >
                 Investors
               </FooterLink>
             </FooterLinkItems>

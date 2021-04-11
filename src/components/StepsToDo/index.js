@@ -47,7 +47,7 @@ const StepsToDo = (props) => {
     <>
       <h1 className="stepsh1">Step By Step Application Process</h1>
       <Container fluid>
-        {props.currentContracts.length !== 0 && (
+        {props.currentContracts.length !== 0 && show && (
           <Alert
             variant="success"
             onClose={() => setShow(false)}
@@ -65,7 +65,7 @@ const StepsToDo = (props) => {
           </Alert>
         )}
         <Row className="align-items-center">
-          <Col xs md={6} xl={4} className="align-self-center">
+          <Col xs lg={6} xl={4} className="align-self-center">
             <div
               className={`circle ${
                 activeStep === 1 ? "ActiveStep" : "InactiveStep"

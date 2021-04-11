@@ -38,6 +38,8 @@ export const FooterLinkItems = styled.div`
   text-decoration: none;
   @media screen and (max-width: 800px) {
     flex-direction: column;
+
+    text-align: center;
   }
 `;
 
@@ -51,11 +53,13 @@ export const FooterLink = styled.a`
   text-decoration: none;
   margin-bottom: 0.5rem;
   font-size: 14px;
+  cursor: pointer;
 
   &:hover {
-    color: #01bf71;
+    color: white;
     transition: 0.3s ease-out;
   }
+  @media screen and;
 `;
 
 export const SocialMedia = styled.section`
@@ -68,10 +72,6 @@ export const SocialMediaWrap = styled.div`
   align-items: center;
   max-width: 1100px;
   margin: 40px auto 0 auto;
-
-  @media screen and (max-width: 820px) {
-    flex-direction: column;
-  }
 `;
 
 export const SocialLogo = styled.a`
