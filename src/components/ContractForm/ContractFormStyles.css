@@ -8,7 +8,7 @@
 .loaderh1 {
   margin-bottom: 10%;
   color: white;
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
 }
 .backGroundImage {
@@ -17,4 +17,15 @@
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+}
+
+.backGroundImage > h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: oblique;
+  font-weight: 900;
+  margin-bottom: 5%;
+}
+.formContainer {
+  padding-top: 20%;
 }
