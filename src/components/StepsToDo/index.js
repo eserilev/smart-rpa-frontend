@@ -68,7 +68,7 @@ const StepsToDo = (props) => {
           <Col xs md={6} xl={4} className="align-self-center">
             <div
               className={`circle ${
-                activeStep === "1" ? "ActiveStep" : "InactiveStep"
+                activeStep === 1 ? "ActiveStep" : "InactiveStep"
               }`}
             >
               <div className="circleContent">
@@ -77,7 +77,7 @@ const StepsToDo = (props) => {
 
                 <Button
                   className={`${
-                    activeStep === "1" ? "buttonActive" : "buttonDisabled"
+                    activeStep === 1 ? "buttonActive" : "buttonDisabled"
                   }`}
                   onClick={() => setActiveStep("2")}
                   id="STEP_1"
