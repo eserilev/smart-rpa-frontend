@@ -5,13 +5,12 @@ import {
   CloseIcon,
   SidebarWrapper,
   SidebarMenu,
-  
   SidebarLink,
   SideBtnWrap,
   SidebarRoute,
 } from "./SideBarElements";
 
-const SideBar = ({isOpen, toggle}) => {
+const SideBar = ({ isOpen, toggle }) => {
   return (
     <SideBarContainer isOpen={isOpen} onClick={toggle}>
       <Icon onClick={toggle}>
@@ -19,13 +18,35 @@ const SideBar = ({isOpen, toggle}) => {
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-          <SidebarLink to="about" onClick={toggle}>About</SidebarLink>
-          <SidebarLink to="discover" onClick={toggle}>Discover</SidebarLink>
-          <SidebarLink to="services" onClick={toggle}>Services</SidebarLink>
-          <SidebarLink to="signup" onClick={toggle}>Sign up</SidebarLink>
+          <SidebarLink
+            href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+            onClick={toggle}
+          >
+            How It Works
+          </SidebarLink>
+          <SidebarLink
+            href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+            onClick={toggle}
+          >
+            Testimonials
+          </SidebarLink>
+          <SidebarLink
+            href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+            onClick={toggle}
+          >
+            Careers
+          </SidebarLink>
+          <SidebarLink
+            href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+            onClick={toggle}
+          >
+            Investors
+          </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
-          <SidebarRoute to="/signin">Sign In</SidebarRoute>
+          <SidebarRoute href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md">
+            How It Works
+          </SidebarRoute>
         </SideBtnWrap>
       </SidebarWrapper>
     </SideBarContainer>

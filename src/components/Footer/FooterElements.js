@@ -59,7 +59,6 @@ export const FooterLink = styled.a`
     color: white;
     transition: 0.3s ease-out;
   }
-  @media screen and;
 `;
 
 export const SocialMedia = styled.section`
