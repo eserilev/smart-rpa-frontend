@@ -20,9 +20,10 @@
 }
 .singleContract {
   padding: 3% 4%;
-  border: 10px solid red;
+  border: 5px dotted black;
   margin: auto;
   margin-bottom: 10%;
+  box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
 }
 .contractsFoundHeader {
   padding: 10% 0%;
