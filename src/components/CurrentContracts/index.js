@@ -63,10 +63,12 @@ const CurrentContracts = (props) => {
         </div>
       )}
       <Container>
-        <h1 className="contractsFoundHeader">
-          {" "}
-          Your Current Smart RPA Contracts!
-        </h1>
+        {currentContracts.length !== 0 && (
+          <h1 className="contractsFoundHeader">
+            {" "}
+            Your Current Smart RPA Contracts!
+          </h1>
+        )}
         <Row className="align-items-center justify-content-evenly">
           {currentContracts.length !== 0 &&
             currentContracts.map((contract) => {
