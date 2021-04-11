@@ -60,8 +60,14 @@ const Navbar = ({ toggle }) => {
               </NavItem> */}
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to="/signin" style={{ textDecoration: "none" }}>
-                Connect Wallet
+              <NavBtnLink style={{ textDecoration: "none" }}>
+                <a
+                  className="btnLink"
+                  style={{ textDecoration: "none", color: "black" }}
+                  href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+                >
+                  How It Works
+                </a>
               </NavBtnLink>
             </NavBtn>
           </NavbarContainer>

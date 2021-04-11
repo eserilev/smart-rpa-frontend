@@ -31,19 +31,13 @@ export const FooterLinksWrapper = styled.div`
 `;
 
 export const FooterLinkItems = styled.div`
+  width: 80vw;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 16px;
-  text-align: left;
-  width: 160px;
-  box-sizing: border-box;
-  color: #fff;
-
-  @media screen and (max-width: 420px) {
-    margin: 0;
-    padding: 10px;
-    width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-decoration: none;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
   }
 `;
 
@@ -106,4 +100,15 @@ export const SocialIcons = styled.div`
 export const SocialIconLink = styled.a`
   color: white;
   font-size: 24px;
+`;
+export const FooterLogo = styled.a`
+  color: #fff;
+  justify-self: flex-start;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+  font-weight: bold;
+  text-decoration: none;
 `;

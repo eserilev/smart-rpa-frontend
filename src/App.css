@@ -98,3 +98,6 @@
 .nothingFoundHeading {
   font-size: 50px;
 }
+.btnLink {
+  text-decoration: none;
+}

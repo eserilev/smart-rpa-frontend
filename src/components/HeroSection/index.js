@@ -15,6 +15,7 @@ import {
   ArrowRight,
   ArrowForward,
 } from "./HeroElements";
+import SingleContract from "../CurrentContracts/SingleContract";
 
 const HeroSection = () => {
   const [hover, setHover] = useState(false);
@@ -38,7 +39,6 @@ const HeroSection = () => {
 
   return (
     <HeroContainer>
-   
       <HeroBg>
         <VideoBg autoPlay loop muted src={cryptoVideo} type="video/mp4" />
       </HeroBg>

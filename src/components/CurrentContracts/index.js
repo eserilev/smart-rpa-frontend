@@ -7,6 +7,8 @@ import smartRPAFactory from "../../contracts/smartRPAFactory";
 import Web3 from "web3";
 import "./currentContract.css";
 import { RingLoader } from "react-spinners";
+import SingleContract from "./SingleContract";
+import { Container, Row, Col } from "react-bootstrap";
 const CurrentContracts = (props) => {
   const [showLoader, setShowLoader] = useState(true);
   const { currentContracts, setCurrentContracts } = useContext(LoginContext);
@@ -42,9 +44,9 @@ const CurrentContracts = (props) => {
     fetchData();
     setShowLoader(false);
   }, []);
-
+  console.log(props.currentContracts);
   return (
-    <div className="tableContainer">
+    <div className="tableContainer ">
       {props.currentContracts.length === 0 && (
         <div className="noContractsFound">
           <h1 className="noContractsFoundText">
@@ -60,48 +62,22 @@ const CurrentContracts = (props) => {
           </Button>
         </div>
       )}
-      {props.currentContracts.length !== 0 && (
-        <>
-          <h1 className="ContractsFound">Your Current Contracts!</h1>
-          {
-            <Table
-              striped
-              bordered
-              hover
-              variant="dark"
-              className="contractTable"
-            >
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Contract URL</th>
-
-                  <th>Days Until Expiration</th>
-                  <th>Active Offer</th>
-                  <th>Offer Response</th>
-                  <th>Offer Responded To</th>
-                </tr>
-              </thead>
-              <tbody>
-                {props.currentContracts.map((contract) => {
-                  totalId++;
-                  return (
-                    <tr>
-                      <td>{totalId}</td>
-                      <td>{contract.newUrl}</td>
-
-                      <td>{contract.newdaysTilExpiration}</td>
-                      <td>{JSON.stringify(contract.activeOffer)}</td>
-                      <td>{contract.offerResponse}</td>
-                      <td>{JSON.stringify(contract.offerRespondedTo)}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </Table>
-          }
-        </>
-      )}
+      <Container>
+        <h1 className="contractsFoundHeader">
+          {" "}
+          Your Current Smart RPA Contracts!
+        </h1>
+        <Row className="align-items-center justify-content-evenly">
+          {currentContracts.length !== 0 &&
+            currentContracts.map((contract) => {
+              return (
+                <Col xs md={6} xl={4} className="mx-auto g-5">
+                  <SingleContract contract={contract} />
+                </Col>
+              );
+            })}
+        </Row>
+      </Container>
     </div>
   );
 };
