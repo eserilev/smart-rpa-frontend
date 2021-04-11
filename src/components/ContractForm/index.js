@@ -8,7 +8,9 @@ import { LoginContext } from "../../Contexts/LoginContext";
 import useWindowSize from "react-use/lib/useWindowSize";
 import MakeConfetti from "../../Confetti/index";
 import { useParams, useHistory } from "react-router-dom";
-
+import { GridLoader } from "react-spinners";
+import { GiPartyPopper } from "react-icons/gi";
+import "./ContractFormStyles.css";
 // import styled from "styled-components";
 
 var test = smartRPAFactory.abi;
@@ -19,6 +21,7 @@ const formSchema = {
 
 const SignInForm = (props) => {
   const [credentials, setCredentials] = useState(formSchema);
+  let [loading, setLoading] = useState(false);
   const { push } = useHistory();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,58 +33,81 @@ const SignInForm = (props) => {
   const redirectToTarget = () => {
     props.history.push(`/SuccessPage`);
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const submitOffer = async (e) => {
     e.preventDefault();
     const url = credentials.URL;
     const expiration = moment(credentials.expiration);
-    const daysTilExpiration = expiration.diff(moment(), 'days');
+    const daysTilExpiration = expiration.diff(moment(), "days");
 
     let web3 = new Web3(window["ethereum"]);
-
+    setLoading(true);
     const accounts = await web3.eth.getAccounts();
     const smartRPA = new web3.eth.Contract(
       smartRPAFactory.abi,
       smartRPAFactory.address
     );
-    
+
     await smartRPA.methods
       .submitOffer(daysTilExpiration, url)
       .send({ from: accounts[0] });
+    setLoading(false);
+
     redirectToTarget();
   };
 
   return (
-    <div className="formContainer">
-      <h1>Submit an offer</h1>
-      <Form className="form" onSubmit={submitOffer}>
-        <Form.Group controlId="formBasicUsername">
-          <Form.Label>RPA Document URL</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter URL"
-            name="URL"
-            onChange={handleChange}
-            value={credentials.URL}
+    <div className="formContainer backGroundImage">
+      {loading !== true && <h1 className="h1Submit">Submit an offer</h1>}
+      {loading && (
+        <div className="loaderContainer">
+          <h1 className="loaderh1">
+            <GiPartyPopper /> Your Contract Is Being Processed!{" "}
+            <GiPartyPopper />
+          </h1>
+          <p className="loaderh1">Please Wait...</p>
+          <GridLoader
+            loading={loading}
+            size={"45px"}
+            color={"silver"}
+            margin={"2"}
           />
-        </Form.Group>
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Initial Expiry Date</Form.Label>
-          <Form.Control
-            type="date"
-            placeholder="Date"
-            min={moment().format("YYYY-MM-DD")}
-            name="expiration"
-            onChange={handleChange}
-            value={credentials.expiration}
-          />
-        </Form.Group>
+        </div>
+      )}
+      ;
+      {loading !== true && (
+        <Form className="form" onSubmit={submitOffer}>
+          <Form.Group controlId="formBasicUsername">
+            <Form.Label>RPA Document URL</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter URL"
+              name="URL"
+              onChange={handleChange}
+              value={credentials.URL}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Initial Expiry Date</Form.Label>
+            <Form.Control
+              type="date"
+              placeholder="Date"
+              min={moment().format("YYYY-MM-DD")}
+              name="expiration"
+              onChange={handleChange}
+              value={credentials.expiration}
+            />
+          </Form.Group>
 
-        <br />
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+          <br />
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      )}
     </div>
   );
 };

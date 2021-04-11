@@ -5,7 +5,7 @@ import MakeConfetti from "../../Confetti/index";
 const SuccessPage = () => {
   return (
     <div className="successContainer">
-      <h1>
+      <h1 className="successh1">
         You Did It! Congratulations On Submitting Your First Offer We Will Get
         In Touch With You Shortly!
       </h1>
@@ -14,7 +14,7 @@ const SuccessPage = () => {
         style={{ textDecoration: "none", color: "white" }}
         to="/CurrentContracts"
       >
-        Create New Contract
+        View Current Contracts
       </Button>
       <MakeConfetti />
     </div>
