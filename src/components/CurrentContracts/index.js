@@ -30,12 +30,25 @@ const CurrentContracts = (props) => {
       let currentContracts = [];
       for (let i = 0; i < count; i++) {
         var offer = await smartRPA.methods.offers(i).call();
+        var offerResponse = "";
+        console.log(offer);
+        switch(offer.offerResponse) {
+          case "1":
+            offerResponse = "Accepted";
+            break;
+          case "2": 
+            offerResponse = "Rejected";
+            break;
+          case "999":
+            offerResponse = "No Response";
+            break;
+        }
         let newContract = {
           newUrl: offer.rpaURL,
           newdaysTilExpiration: offer.initialResponseTime,
           activeOffer: offer.activeOffer,
           offerRespondedTo: offer.offerRespondedTo,
-          offerResponse: "NO RESPONSE",
+          offerResponse: offerResponse
         };
         currentContracts.push(newContract);
       }
