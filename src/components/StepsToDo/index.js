@@ -5,14 +5,16 @@ import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import smartRPAFactory from "../../contracts/smartRPAFactory";
 import Web3 from "web3";
+const stepFromLocalStorage = JSON.parse(
+  localStorage.getItem("activeStep") || "1"
+);
 const StepsToDo = (props) => {
-  const [active1, setActive1] = useState(true);
-  const [active2, setActive2] = useState(true);
-  const [active3, setActive3] = useState(true);
-  const [active4, setActive4] = useState(false);
-  const [active5, setActive5] = useState(false);
-  const [active6, setActive6] = useState(false);
+  const [activeStep, setActiveStep] = useState(stepFromLocalStorage);
   const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem("activeStep", JSON.stringify(activeStep));
+  }, [activeStep]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,15 +67,19 @@ const StepsToDo = (props) => {
         <Row className="align-items-center">
           <Col xs md={6} xl={4} className="align-self-center">
             <div
-              className={`circle ${active1 ? "ActiveStep" : "InactiveStep"}`}
+              className={`circle ${
+                activeStep === "1" ? "ActiveStep" : "InactiveStep"
+              }`}
             >
               <div className="circleContent">
                 <h2 className="circleH2">Step 1</h2>
                 <p>Explore Zillow Listings!</p>
 
                 <Button
-                  className={`${active1 ? "buttonActive" : "buttonDisabled"}`}
-                  onClick={() => setActive2(true)}
+                  className={`${
+                    activeStep === "1" ? "buttonActive" : "buttonDisabled"
+                  }`}
+                  onClick={() => setActiveStep("2")}
                   id="STEP_1"
                   target="_blank"
                   href="https://www.zillow.com/homes/recently_sold/?searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22mapBounds%22%3A%7B%22west%22%3A-119.77852821350098%2C%22east%22%3A-119.67862129211426%2C%22south%22%3A39.37597583605191%2C%22north%22%3A39.47343791983462%7D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22sort%22%3A%7B%22value%22%3A%22globalrelevanceex%22%7D%2C%22fsba%22%3A%7B%22value%22%3Afalse%7D%2C%22fsbo%22%3A%7B%22value%22%3Afalse%7D%2C%22nc%22%3A%7B%22value%22%3Afalse%7D%2C%22fore%22%3A%7B%22value%22%3Afalse%7D%2C%22cmsn%22%3A%7B%22value%22%3Afalse%7D%2C%22auc%22%3A%7B%22value%22%3Afalse%7D%2C%22pmf%22%3A%7B%22value%22%3Afalse%7D%2C%22pf%22%3A%7B%22value%22%3Afalse%7D%2C%22rs%22%3A%7B%22value%22%3Atrue%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%2C%22price%22%3A%7B%22min%22%3A900000%7D%2C%22mp%22%3A%7B%22min%22%3A3005%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A13%7D"
@@ -83,118 +89,128 @@ const StepsToDo = (props) => {
               </div>
             </div>
           </Col>
-          <Col xs md={6} xl={4}>
+          <Col xs md={6} xl={4} className="align-self-center">
             <div
               className={`circle ${
-                JSON.parse(active2) ? "ActiveStep" : "InactiveStep"
+                activeStep === "2" ? "ActiveStep" : "InactiveStep"
               }`}
             >
               <div className="circleContent">
-                <h2 className="circleH2">Submit an offer!</h2>
-                <p>Connect Offer To The RSA BlockChain!</p>
-                <LinkContainer to="/ContractForm">
-                  <Button
-                    id="STEP_2"
-                    className={`${
-                      JSON.parse(active2) ? "buttonActive" : "buttonDisabled"
-                    }`}
-                    onClick={() => setActive3(true)}
-                  >
-                    Submit Offer!
-                  </Button>
-                </LinkContainer>
+                <h2 className="circleH2">Step 2</h2>
+                <p>Submit An Offer!</p>
+
+                <Button
+                  className={`${
+                    activeStep === "2" ? "buttonActive" : "buttonDisabled"
+                  }`}
+                  renderAs="button"
+                  id="STEP_2"
+                  target="_blank"
+                  href="http://localhost:3000/ContractForm"
+                  onClick={() => setActiveStep("3")}
+                >
+                  Submit Offer!
+                </Button>
               </div>
             </div>
           </Col>
-          <Col xs md={6} xl={4}>
+          <Col xs md={6} xl={4} className="align-self-center">
             <div
               className={`circle ${
-                JSON.parse(active3) ? "ActiveStep" : "InactiveStep"
+                activeStep === "3" ? "ActiveStep" : "InactiveStep"
               }`}
             >
               <div className="circleContent">
-                <h2 className="circleH2">Offer Pending!</h2>
-                <p>View Offers Here</p>
-                <LinkContainer to="/ContractForm">
-                  <Button
-                    id="STEP_2"
-                    className={`${
-                      JSON.parse(active3) ? "buttonActive" : "buttonDisabled"
-                    }`}
-                    onClick={() => setActive4(true)}
-                  >
-                    View Offers!
-                  </Button>
-                </LinkContainer>
+                <h2 className="circleH2">Step 3</h2>
+                <p>View Pending Offers!</p>
+
+                <Button
+                  className={`${
+                    activeStep === "3" ? "buttonActive" : "buttonDisabled"
+                  }`}
+                  renderAs="button"
+                  id="STEP_1"
+                  target="_blank"
+                  href="http://localhost:3000/CurrentContracts"
+                  onClick={() => setActiveStep("1")}
+                >
+                  View My Offers!
+                </Button>
               </div>
             </div>
           </Col>
-          {/* <Col xs md={6} xl={4}>
+          {/* <Col xs md={6} xl={4} className="align-self-center">
             <div
               className={`circle ${
-                JSON.parse(active4) ? "ActiveStep" : "InactiveStep"
+                activeStep === "2" ? "ActiveStep" : "InactiveStep"
               }`}
             >
               <div className="circleContent">
-                <h2 className="circleH2">Submit an offer!</h2>
-                <p>Connect Offer To The RSA BlockChain!</p>
-                <LinkContainer to="/ContractForm">
-                  <Button
-                    id="STEP_2"
-                    className={`${
-                      JSON.parse(active4) ? "buttonActive" : "buttonDisabled"
-                    }`}
-                    onClick={() => setActive5(true)}
-                  >
-                    Submit Offer!
-                  </Button>
-                </LinkContainer>
+                <h2 className="circleH2">Step 1</h2>
+                <p>Explore Zillow Listings!</p>
+
+                <Button
+                  className={`${
+                    activeStep === "2" ? "buttonActive" : "buttonDisabled"
+                  }`}
+                  renderAs="button"
+                  id="STEP_1"
+                  target="_blank"
+                  href="http://localhost:3000/ContractForm"
+                  onClick={() => setActiveStep("3")}
+                >
+                  View Listing!
+                </Button>
               </div>
             </div>
           </Col>
-          <Col xs md={6} xl={4}>
+          <Col xs md={6} xl={4} className="align-self-center">
             <div
               className={`circle ${
-                JSON.parse(active5) ? "ActiveStep" : "InactiveStep"
+                activeStep === "2" ? "ActiveStep" : "InactiveStep"
               }`}
             >
               <div className="circleContent">
-                <h2 className="circleH2">Submit an offer!</h2>
-                <p>Connect Offer To The RSA BlockChain!</p>
-                <LinkContainer to="/ContractForm">
-                  <Button
-                    id="STEP_2"
-                    className={`${
-                      JSON.parse(active5) ? "buttonActive" : "buttonDisabled"
-                    }`}
-                    onClick={() => setActive6(true)}
-                  >
-                    Submit Offer!
-                  </Button>
-                </LinkContainer>
+                <h2 className="circleH2">Step 1</h2>
+                <p>Explore Zillow Listings!</p>
+
+                <Button
+                  className={`${
+                    activeStep === "2" ? "buttonActive" : "buttonDisabled"
+                  }`}
+                  renderAs="button"
+                  id="STEP_1"
+                  target="_blank"
+                  href="http://localhost:3000/ContractForm"
+                  onClick={() => setActiveStep("3")}
+                >
+                  View Listing!
+                </Button>
               </div>
             </div>
           </Col>
-          <Col xs md={6} xl={4}>
+          <Col xs md={6} xl={4} className="align-self-center">
             <div
               className={`circle ${
-                JSON.parse(active5) ? "ActiveStep" : "InactiveStep"
+                activeStep === "2" ? "ActiveStep" : "InactiveStep"
               }`}
             >
               <div className="circleContent">
-                <h2 className="circleH2">Submit an offer!</h2>
-                <p>Connect Offer To The RSA BlockChain!</p>
-                <LinkContainer to="/ContractForm">
-                  <Button
-                    id="STEP_2"
-                    className={`${
-                      JSON.parse(active5) ? "buttonActive" : "buttonDisabled"
-                    }`}
-                    onClick={() => setActive6(true)}
-                  >
-                    Submit Offer!
-                  </Button>
-                </LinkContainer>
+                <h2 className="circleH2">Step 1</h2>
+                <p>Explore Zillow Listings!</p>
+
+                <Button
+                  className={`${
+                    activeStep === "2" ? "buttonActive" : "buttonDisabled"
+                  }`}
+                  renderAs="button"
+                  id="STEP_1"
+                  target="_blank"
+                  href="http://localhost:3000/ContractForm"
+                  onClick={() => setActiveStep("3")}
+                >
+                  View Listing!
+                </Button>
               </div>
             </div>
           </Col> */}
