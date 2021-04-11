@@ -20,12 +20,23 @@
 }
 
 .backGroundImage > h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   font-style: oblique;
   font-weight: 900;
-  margin-bottom: 5%;
 }
 .formContainer {
   padding-top: 30%;
+}
+@media screen and (min-width: 768px) {
+  .formContainer {
+    padding-top: 300px;
+    padding-bottom: 300px;
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .formContainer > h1 {
+    font-size: 1.5rem;
+  }
 }
