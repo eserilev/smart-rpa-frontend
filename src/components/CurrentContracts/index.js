@@ -11,30 +11,33 @@ const CurrentContracts = (props) => {
   console.log(Object.keys(props.currentContracts).length);
   let totalId = 0;
   console.log(props.currentContracts);
-
-
-  useEffect(async () => {
-    let web3 = new Web3(window["ethereum"]);
-    const smartRPA = new web3.eth.Contract(
-      smartRPAFactory.abi,
-      smartRPAFactory.address
-    );   
-    var count = await smartRPA.methods.getNumberOfOffers().call();
-    let currentContracts = [];
-    for(let i = 0; i < count; i++ ) {
-      var offer = await smartRPA.methods.offers(i).call();
-      let newContract = {
-        newUrl: offer.rpaURL,
-        newdaysTilExpiration: offer.initialResponseTime,
-        activeOffer: offer.activeOffer,
-        offerRespondedTo: offer.offerRespondedTo,
-        offerResponse: "NO RESPONSE"
-      };
-      currentContracts.push(newContract);   
-    }    
-    props.setCurrentContracts([...currentContracts]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      let web3 = new Web3(window["ethereum"]);
+      const smartRPA = new web3.eth.Contract(
+        smartRPAFactory.abi,
+        smartRPAFactory.address
+      );
+      var count = await smartRPA.methods.getNumberOfOffers().call();
+      let currentContracts = [];
+      for (let i = 0; i < count; i++) {
+        var offer = await smartRPA.methods.offers(i).call();
+        let newContract = {
+          newUrl: offer.rpaURL,
+          newdaysTilExpiration: offer.initialResponseTime,
+          activeOffer: offer.activeOffer,
+          offerRespondedTo: offer.offerRespondedTo,
+          offerResponse: "NO RESPONSE",
+        };
+        currentContracts.push(newContract);
+      }
+      props.setCurrentContracts([...currentContracts]);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="tableContainer">
@@ -66,8 +69,11 @@ const CurrentContracts = (props) => {
               <tr>
                 <th>#</th>
                 <th>Contract URL</th>
-                <th>Expiration Date</th>
+
                 <th>Days Until Expiration</th>
+                <th>Active Offer</th>
+                <th>Offer Response</th>
+                <th>Offer Responded To</th>
               </tr>
             </thead>
             <tbody>
@@ -77,8 +83,11 @@ const CurrentContracts = (props) => {
                   <tr>
                     <td>{totalId}</td>
                     <td>{contract.newUrl}</td>
-                    <td>{contract.newexpiration}</td>
+
                     <td>{contract.newdaysTilExpiration}</td>
+                    <td>{JSON.stringify(contract.activeOffer)}</td>
+                    <td>{contract.offerResponse}</td>
+                    <td>{JSON.stringify(contract.offerRespondedTo)}</td>
                   </tr>
                 );
               })}

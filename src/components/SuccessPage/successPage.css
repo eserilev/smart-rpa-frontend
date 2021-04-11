@@ -1,8 +1,13 @@
 .successContainer {
-  padding: 15% 15%;
+  padding: 25% 15%;
+
   font-family: "Staatliches", cursive;
   background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
 }
 .toContractsFoundButton {
   margin-top: 10%;
+}
+.successh1 {
+  font-size: 2rem;
+  text-align: center;
 }
