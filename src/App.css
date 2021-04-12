@@ -1,5 +1,6 @@
-.circle {
-  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+.circle1 {
+  background-image: url(./videos/house.png);
+  background-position: center;
 
   height: 300px;
   width: 300px;
@@ -8,6 +9,29 @@
   border-radius: 100%;
   position: relative;
 }
+.circle2 {
+  background-image: url(./videos/check.png);
+  background-position: center;
+
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  margin-bottom: 8%;
+  border-radius: 100%;
+  position: relative;
+}
+.circle3 {
+  background-image: url(./videos/contract.png);
+  background-position: center;
+
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  margin-bottom: 8%;
+  border-radius: 100%;
+  position: relative;
+}
+
 .stepsh1 {
   text-align: center;
   font-family: "Staatliches", cursive;
@@ -31,6 +55,7 @@
   text-align: center;
   margin: 5%;
   color: white;
+  font-size: 1.3em;
 }
 .circleContent > button {
   background-color: #a9c1ee;
@@ -78,7 +103,7 @@
 .buttonDisabled {
   opacity: 0.65 !important;
   cursor: not-allowed !important;
-  background-color: #a9c1ee !important;
+  background-color: black !important;
 }
 .formContainer {
   padding: 10% 25%;
