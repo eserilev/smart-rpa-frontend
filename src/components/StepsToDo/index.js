@@ -67,7 +67,7 @@ const StepsToDo = (props) => {
         <Row className="align-items-center">
           <Col xs lg={6} xl={4} className="align-self-center">
             <div
-              className={`circle ${
+              className={`circle1 ${
                 activeStep === 1 ? "ActiveStep" : "InactiveStep"
               }`}
             >
@@ -91,7 +91,7 @@ const StepsToDo = (props) => {
           </Col>
           <Col xs md={6} xl={4} className="align-self-center">
             <div
-              className={`circle ${
+              className={`circle2 ${
                 activeStep === "2" ? "ActiveStep" : "InactiveStep"
               }`}
             >
@@ -116,7 +116,7 @@ const StepsToDo = (props) => {
           </Col>
           <Col xs md={6} xl={4} className="align-self-center">
             <div
-              className={`circle ${
+              className={`circle3 ${
                 activeStep === "3" ? "ActiveStep" : "InactiveStep"
               }`}
             >
