@@ -37,14 +37,14 @@ const SideBar = ({ isOpen, toggle }) => {
             Careers
           </SidebarLink>
           <SidebarLink
-            href="https://github.com/gumdropsteve/nevada-smart-rpa/issues"
+            href="https://github.com/gumdropsteve/SmartRPA/issues"
             onClick={toggle}
           >
             Investors
           </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
-          <SidebarRoute href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/main/README.md">
+          <SidebarRoute href="https://github.com/gumdropsteve/SmartRPA/blob/main/README.md">
             How It Works
           </SidebarRoute>
         </SideBtnWrap>
