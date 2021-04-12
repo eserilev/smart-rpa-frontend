@@ -19,32 +19,32 @@ const SideBar = ({ isOpen, toggle }) => {
       <SidebarWrapper>
         <SidebarMenu>
           <SidebarLink
-            href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+            href="https://github.com/gumdropsteve/SmartRPA/blob/main/README.md"
             onClick={toggle}
           >
             How It Works
           </SidebarLink>
           <SidebarLink
-            href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+            href="https://github.com/gumdropsteve/SmartRPA/blob/main/README.md"
             onClick={toggle}
           >
             Testimonials
           </SidebarLink>
           <SidebarLink
-            href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+            href="https://github.com/gumdropsteve/SmartRPA/blob/main/README.md"
             onClick={toggle}
           >
             Careers
           </SidebarLink>
           <SidebarLink
-            href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md"
+            href="https://github.com/gumdropsteve/nevada-smart-rpa/issues"
             onClick={toggle}
           >
             Investors
           </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
-          <SidebarRoute href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/feature/README.md/README.md">
+          <SidebarRoute href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/main/README.md">
             How It Works
           </SidebarRoute>
         </SideBtnWrap>
