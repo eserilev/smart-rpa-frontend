@@ -53,7 +53,7 @@ const Footer = () => {
               </FooterLink>
               <FooterLink
                 style={{ textDecoration: "none", color: "white" }}
-                to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/main/issues"
+                to="https://github.com/gumdropsteve/nevada-smart-rpa/issues"
               >
                 Investors
               </FooterLink>
