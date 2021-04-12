@@ -6,15 +6,14 @@ const SuccessPage = () => {
   return (
     <div className="successContainer">
       <h1 className="successh1">
-        You Did It! Congratulations On Submitting Your First Offer We Will Get
-        In Touch With You Shortly!
+        You Did It! Congratulations On Submitting An Offer!
       </h1>
       <Button
         className="toContractsFoundButton"
         style={{ textDecoration: "none", color: "white" }}
         to="/CurrentContracts"
       >
-        View Current Contracts
+        View Current Offers
       </Button>
       <MakeConfetti />
     </div>

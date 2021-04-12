@@ -45,7 +45,7 @@ const HeroSection = () => {
       <HeroContent>
         <HeroH1></HeroH1>
         <HeroP>
-          Nevada Residential Purchase Agreement (RPA) Uploaded To The BlockChain
+          SmartRPA - Neighbor to Neighbor Real Estate Transactions
         </HeroP>
         <HeroBtnWrapper>
           <Button

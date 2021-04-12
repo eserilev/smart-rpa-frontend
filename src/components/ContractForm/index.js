@@ -50,11 +50,15 @@ const SignInForm = (props) => {
       smartRPAFactory.abi,
       smartRPAFactory.address
     );
-
-    await smartRPA.methods
-      .submitOffer(daysTilExpiration, url)
-      .send({ from: accounts[0] });
-    setLoading(false);
+    try {
+      await smartRPA.methods
+        .submitOffer(daysTilExpiration, url)
+        .send({ from: accounts[0] });
+      setLoading(false);
+    } catch(ex) {
+      setLoading(false);
+    }
+   
 
     redirectToTarget();
   };

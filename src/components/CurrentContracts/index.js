@@ -30,12 +30,25 @@ const CurrentContracts = (props) => {
       let currentContracts = [];
       for (let i = 0; i < count; i++) {
         var offer = await smartRPA.methods.offers(i).call();
+        var offerResponse = "";
+        console.log(offer);
+        switch(offer.offerResponse) {
+          case "1":
+            offerResponse = "Accepted";
+            break;
+          case "2": 
+            offerResponse = "Rejected";
+            break;
+          case "999":
+            offerResponse = "No Response";
+            break;
+        }
         let newContract = {
           newUrl: offer.rpaURL,
           newdaysTilExpiration: offer.initialResponseTime,
           activeOffer: offer.activeOffer,
           offerRespondedTo: offer.offerRespondedTo,
-          offerResponse: "NO RESPONSE",
+          offerResponse: offerResponse
         };
         currentContracts.push(newContract);
       }
@@ -50,7 +63,7 @@ const CurrentContracts = (props) => {
       {props.currentContracts.length === 0 && (
         <div className="noContractsFound">
           <h1 className="noContractsFoundText">
-            <GrStatusUnknown /> No Contracts Found... <GrStatusUnknown />
+            <GrStatusUnknown /> No Offers Found... <GrStatusUnknown />
             <RingLoader />
           </h1>
           <Button
@@ -58,7 +71,7 @@ const CurrentContracts = (props) => {
             style={{ textDecoration: "none", color: "white" }}
             to="/ContractForm"
           >
-            Create New Contract
+            Submit a new Offer
           </Button>
         </div>
       )}
@@ -66,7 +79,7 @@ const CurrentContracts = (props) => {
         {currentContracts.length !== 0 && (
           <h1 className="contractsFoundHeader">
             {" "}
-            Your Current Smart RPA Contracts!
+            Current Offers
           </h1>
         )}
         <Row className="align-items-center justify-content-evenly">
