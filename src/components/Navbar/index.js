@@ -64,7 +64,7 @@ const Navbar = ({ toggle }) => {
                 <a
                   className="btnLink"
                   style={{ textDecoration: "none", color: "black" }}
-                  href="https://github.com/gumdropsteve/nevada-smart-rpa/blob/main/README.md"
+                  href="https://github.com/gumdropsteve/SmartRPA/blob/main/README.md"
                 >
                   How It Works
                 </a>
