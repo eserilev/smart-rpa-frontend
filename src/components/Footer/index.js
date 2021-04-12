@@ -35,25 +35,25 @@ const Footer = () => {
               <FooterLinkTitle> About Us</FooterLinkTitle>
               <FooterLink
                 style={{ textDecoration: "none", color: "white" }}
-                to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/main/README.md"
+                to="https://github.com/gumdropsteve/SmartRPA/blob/main/README.md"
               >
                 How It Works
               </FooterLink>
               <FooterLink
                 style={{ textDecoration: "none", color: "white" }}
-                to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/main/README.md"
+                to="https://github.com/gumdropsteve/SmartRPA/blob/main/README.md"
               >
                 Testimonials
               </FooterLink>
               <FooterLink
                 style={{ textDecoration: "none", color: "white" }}
-                to="https://github.com/gumdropsteve/nevada-smart-rpa/blob/main/README.md"
+                to="https://github.com/gumdropsteve/SmartRPA/blob/main/README.md"
               >
                 Careers
               </FooterLink>
               <FooterLink
                 style={{ textDecoration: "none", color: "white" }}
-                to="https://github.com/gumdropsteve/nevada-smart-rpa/issues"
+                to="https://github.com/gumdropsteve/SmartRPA/issues"
               >
                 Investors
               </FooterLink>
